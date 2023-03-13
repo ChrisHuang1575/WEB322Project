@@ -1,0 +1,17 @@
+<h1>Show featured!</h1>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Occupation</th>
+        <th>Company</th>
+        <th>Picture</th>
+    </tr>
+    {{#each rentals}}
+        {{>rental this}}
+    {{else}}
+        <tr>
+            <td>Nothing There!</td>
+        </tr>
+    {{/each}}
+</table>

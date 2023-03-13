@@ -1,0 +1,65 @@
+<section class="vh-100 bg-image"
+  style="background-image: ">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="mb-5">Create an account</h2>
+
+              <form action="/regist" method="post">
+                {{#if validationMessages.name}}
+                  <span style="color: red;">{{validationMessages.name}}</span><br/>
+                {{/if}}
+                <div class="form-outline mb-4">
+                  <input type="text" id="form3Example1cg" name="name" class="form-control form-control-lg" value="{{values.name}}"/>
+                  <label class="form-label" for="form3Example1cg">Name</label>
+                </div>
+                
+                {{#if validationMessages.email}}
+                  <span style="color: red;">{{validationMessages.email}}</span><br/>
+                {{/if}}
+                <div class="form-outline mb-4">
+                  <input type="text" id="form3Example3cg" name="email" class="form-control form-control-lg" value="{{values.email}}"/>
+                  <label class="form-label" for="form3Example3cg">Email</label>
+                </div>
+
+                {{#if validationMessages.password}}
+                  <span style="color: red;">{{validationMessages.password}}</span><br/>
+                {{/if}}
+                <div class="form-outline mb-4">
+                  <input type="password" id="form3Example4cg" name="password"class="form-control form-control-lg" value="{{values.password}}"/>
+                  <label class="form-label" for="form3Example4cg">Password</label>
+                </div>
+                {{#if validationMessages.rep_password}}
+                  <span style="color: red;">{{validationMessages.rep_password}}</span><br/>
+                {{/if}}
+                <div class="form-outline mb-4">
+                  <input type="password" id="form3Example4cdg" name="rep_password"class="form-control form-control-lg" value="{{values.rep_password}}"/>
+                  <label class="form-label" for="form3Example4cdg">Repeat your password</label>
+                </div>
+                
+                
+                <div class="form-check d-flex justify-content-start mb-4">
+                  <input class="form-check-input" type="checkbox" value="" id="form2Example3" />
+                  <label class="form-check-label" for="form2Example3"> I agree all statements in Terms of service </label>
+                </div>
+                
+
+                <div class="d-flex justify-content-center">
+                  <button class="btn btn-primary btn-lg btn-block" type="submit">Register</button>
+                </div>
+
+                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="/login"
+                    class="fw-bold text-body"><u>Login here</u></a></p>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

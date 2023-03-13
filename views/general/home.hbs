@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="p-5 my-4  rounded-3 " style="background-image: url('/rentals-images/hero.jpg'); height: 400px;">
+        <h1 class="text-white">Tiny Cabins, Big Adventures</h1>
+        <p class="text-white">Escape to nature at our cozy off-grid and ecologically-sound cabins in the woods.</p>
+        <p><a href="" target="_blank" class="btn btn-primary btn-lg">Get started today</a></p>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <h2>MAY LONG WEEKEND</h2>
+            <p >Kickstart the summer with a friends filled trip in the great outdoors. May long weekend dates are now available!</p>
+            <p><a href="" target="_blank" class="btn btn-primary">Learn More &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>WINTER SAVINGS!</h2>
+            <p>Don’t miss out on our reduced winter pricing. In 2023, resolve to adventure more.</p>
+            <p><a href="" target="_blank" class="btn btn-primary">Learn More &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>MARCH BREAK ADVENTURES</h2>
+            <p>Make time for family time in the wilderness. Plan your March Break adventures now!</p>
+            <p><a href="" target="_blank" class="btn btn-primary">Learn More &raquo;</a></p>
+        </div>
+        
+</div>
+
+<div class="row">
+    {{#each rentals}}
+        {{>rental this}}
+    {{else}}
+        <tr>
+            <td>Nothing There!</td>
+        </tr>
+    {{/each}}
+</div>
