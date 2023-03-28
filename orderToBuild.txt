@@ -1,0 +1,35 @@
+(client)
+1-1. create the form view
+1-2. set action attribute on the form
+1-3. set proper method attribute
+1-4. set proper enctype attribute
+
+(server)
+2-1. setup some middleware to parse the form content 
+2-2. create route to handle data on 'req' obj
+2-3. respond to the client with data
+
+SendGridSetup:
+Register for an account at: https://sendgrid.com/
+Create an API Key using the SendGrid dashboard.
+Install the SendGrid API module: npm install “@sendgrid/mail”
+Import the module, set the API key, construct your email, and send.
+
+
+TO-DO-LIST:
+-make the values stay after the values do not pass the validation(done)
+-Email Message: (done)
+• Must contain a message welcoming the user. 
+• Must contain the user’s first and/or last name. 
+• Must contain your name and website name. 
+• Does not need to be styled. 
+-Welcome page:(done)
+• Must be configured with its own route, at “/welcome”. 
+• Must contain the header, navigation bar, and footer. 
+• Must contain a message welcoming the user. 
+• May contain (but does not have to) images, videos, etc. 
+• Markup must appear in a Handlebars view. 
+• Have styling applied that matches the other pages of your web app. 
+
+-change the logo with icon
+-add more foot media icon

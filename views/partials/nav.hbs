@@ -13,15 +13,28 @@
                 <a href="/rentals/cityProvince" class="nav-item nav-link">Rental</a>
                 
             </div>
+            {{#if user}}
             <div class="navbar-nav ms-auto ">
-                <a href="/regist" class="nav-item nav-link">Register</a>
-                <a href="/login" class="nav-item nav-link">Login</a>
+                <a href="/logout" class="nav-item nav-link">Logout</a>
             </div>
+            {{else}}
+            <div class="navbar-nav ms-auto ">
+                <a href="/user/sign-up" class="nav-item nav-link">Register</a>
+                <a href="/user/log-in" class="nav-item nav-link">Login</a>
+            </div>
+            {{/if}}
             
         </div>
         <span class="navbar-text">
-            {{#if values.email}}
-            Welcome home: {{values.email}}
+                <a href="/cart"><i class="fa fa-shopping-cart"></i></a>
+        </span>
+        <span class="navbar-text">
+            {{#if user}}
+                {{#if user.userType}}
+                    <a href="/cart">Welcome home clerk: {{user.name}} </a>
+                {{else}}
+                    <a href="/rentals/list">Welcome: {{user.name}} </a>
+                {{/if}}
             {{/if}}
         </span>
     </div>

@@ -1,16 +1,17 @@
 const path = require("path");
 const express = require("express");
 const exphbs = require("express-handlebars");
+const mongoose = require("mongoose");
+const session = require("express-session");
 const app = express();
 
 // Set up dotenv
 require('dotenv').config()
 
-
-var handlebars = require('handlebars'),
-    groupBy = require('handlebars-group-by');
-
-groupBy.register(handlebars);
+//Banned as requirment
+// var handlebars = require('handlebars'),
+//     groupBy = require('handlebars-group-by');
+//groupBy.register(handlebars);
 
 // Set up Handlebars
 app.engine(".hbs", exphbs.engine({
@@ -18,8 +19,35 @@ app.engine(".hbs", exphbs.engine({
     defaultLayout: "main"
 }));
 app.set("view engine", ".hbs");
+
+// Connect to the mongodb
+//"mongodb+srv://dbUser:Yongan1575@senecaweb.c1ps4uo.mongodb.net/web322hya-2231?retryWrites=true&w=majority"
+//process.env.MONGO_CONN_STRING
+mongoose.connect(process.env.MONGO_CONN_STRING, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => {
+    console.log("Connected to the MongoDB database.");
+}).catch(err => {
+    console.log(`Unable to connect to MongoDB ... ${err}`);
+});
+
 // Set up body-parser
 app.use(express.urlencoded({ extended: false }));
+
+// Set up express-session
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true
+}));
+
+app.use((req, res, next) => {
+    // res.locals.user is a global handlebars variable.
+    // This means that every single handlebars file can access this variable.
+    res.locals.user = req.session.user;
+    next();
+});
 
 // Set up "assets" folder so it is public.
 app.use(express.static(path.join(__dirname, "/assets")));
@@ -27,9 +55,11 @@ app.use(express.static(path.join(__dirname, "/assets")));
 // Load the controllers into express.
 const generalController = require("./controllers/generalController");
 const rentalsController = require("./controllers/rentalsController");
+const userController = require("./controllers/userController");
 
 app.use("/", generalController);
 app.use("/rentals", rentalsController);
+app.use("/user",userController);
 
 // *** DO NOT MODIFY THE LINES BELOW ***
 
