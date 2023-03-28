@@ -1,6 +1,5 @@
-
-    
-<div class="container">
+{{!-- version 1 --}}
+{{!-- <div class="container">
 <div class="row">
     {{#group rentals by="city"}}
     <h1>{{ value }}, Ontario</h1>
@@ -10,5 +9,18 @@
         {{>rental}}
     {{/each}}
     {{/group}}
+</div>
+</div> --}}
+
+<div class="container">
+    {{#each rentals}}
+    <div class="row"><h1>{{ this.cityProvince }}</h1></div>
+    <div class="row">
+        {{#each this.rentals}}
+        {{>rental this}}
+        {{/each}}
+    </div>
+        
+    {{/each}}
 </div>
 </div>
