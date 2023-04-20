@@ -1,4 +1,8 @@
+<<<<<<< HEAD
  const userList = require("../models/userModel");
+=======
+const userList = require("../models/userModel");
+>>>>>>> 27e611deb30175551cb3d8b33f1e93e157ec766f
 const express = require("express");
 const router = express.Router();
 

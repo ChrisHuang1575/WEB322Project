@@ -26,12 +26,23 @@
             
         </div>
         <span class="navbar-text">
+<<<<<<< HEAD
             {{#if user}}
                 
                 {{#if user.userType}}
                     <a href="/rentals/list">Welcome home clerk: {{user.name}} &nbsp&nbsp</a>
                 {{else}}
                     <a href="/cart">Welcome: {{user.name}}&nbsp&nbsp</a>
+=======
+                <a href="/cart"><i class="fa fa-shopping-cart"></i></a>
+        </span>
+        <span class="navbar-text">
+            {{#if user}}
+                {{#if user.userType}}
+                    <a href="/cart">Welcome home clerk: {{user.name}} </a>
+                {{else}}
+                    <a href="/rentals/list">Welcome: {{user.name}} </a>
+>>>>>>> 27e611deb30175551cb3d8b33f1e93e157ec766f
                 {{/if}}
             {{/if}}
         </span>

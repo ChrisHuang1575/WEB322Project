@@ -1,5 +1,80 @@
 const mongoose = require("mongoose");
+<<<<<<< HEAD
 
+=======
+//dummy data
+// var dummyRentals = [
+//     {
+//         headline: "Baylight Cabin",
+//         numSleeps: 2,
+//         numBedrooms: 1,
+//         pricePerNight: 199,
+//         city: "Haliburton",
+//         province: "Ontario",
+//         imageUrl: "Baylight-Winter.jpg",
+//         featuredRental: true
+//     },
+//     {
+//         headline: "Big Rock Cabin",
+//         numSleeps: 3,
+//         numBedrooms: 2,
+//         pricePerNight: 189,
+//         city: "Haliburton",
+//         province: "Ontario",
+//         imageUrl: "Cabinscape-Big-Rock.jpg",
+//         featuredRental: false
+//     },
+//     {
+//         headline: "Bluebell Cabin",
+//         numSleeps: 2,
+//         numBedrooms: 1,
+//         pricePerNight: 149,
+//         city: "Kirkfield",
+//         province: "Ontario",
+//         imageUrl: "BluebellHeader.jpg",
+//         featuredRental: true
+//     },
+//     {
+//         headline: "Bone Cabin",
+//         numSleeps: 3,
+//         numBedrooms: 1,
+//         pricePerNight: 199,
+//         city: "Haliburton",
+//         province: "Ontario",
+//         imageUrl: "Bone_Winter.jpg",
+//         featuredRental: false
+//     },
+//     {
+//         headline: "Burdock Cabin",
+//         numSleeps: 3,
+//         numBedrooms: 1,
+//         pricePerNight: 199,
+//         city: "Kirkfield",
+//         province: "Ontario",
+//         imageUrl: "BurdockCabin2.jpg",
+//         featuredRental: true
+//     },
+//     {
+//         headline: "Buttercup Cabin",
+//         numSleeps: 2,
+//         numBedrooms: 1,
+//         pricePerNight: 149,
+//         city: "Kirkfield",
+//         province: "Ontario",
+//         imageUrl: "Buttercup.jpg",
+//         featuredRental: false
+//     },{
+//         headline: "Callalily Cabin",
+//         numSleeps: 2,
+//         numBedrooms: 1,
+//         pricePerNight: 149,
+//         city: "Kirkfield",
+//         province: "Ontario",
+//         imageUrl: "Callalily.jpg",
+//         featuredRental: false
+//     }
+// ];
+>>>>>>> 27e611deb30175551cb3d8b33f1e93e157ec766f
 
 //define rentals schema and model
 //rental schema
@@ -17,6 +92,7 @@ const rentalSchema = new mongoose.Schema({
 //rentals model
 const rentalModel = mongoose.model("rentals",rentalSchema);
 
+<<<<<<< HEAD
 module.exports = {
     rentalModel : rentalModel
 }
@@ -77,12 +153,61 @@ function pullRentals(){
 
 module.exports.getAllRentals = function(){
     pullRentals();
+=======
+//insert all dummy data into mongodb
+module.exports.insertdummy = function(){    
+for (let i = 0; i < dummyRentals.length; i++) {
+    let headline = dummyRentals[i].headline;
+    let numSleeps = dummyRentals[i].numSleeps;
+    let numBedrooms= dummyRentals[i].numBedrooms;
+    let pricePerNight= dummyRentals[i].pricePerNight;
+    let city= dummyRentals[i].city;
+    let province= dummyRentals[i].province;
+    let imageUrl= dummyRentals[i].imageUrl;
+    let featuredRental= dummyRentals[i].featuredRental;
+    let newR = new rentalModel({
+        headline,
+        numSleeps,
+        numBedrooms,
+        pricePerNight,
+        city,
+        province,
+        imageUrl,
+        featuredRental,
+    });
+    newR.save()
+        .then(() => {
+            console.log("Created a name document for: " + headline);
+            
+        })
+        .catch(err => {
+            console.log("Couldn't create the name: " + headline);
+            
+        });
+}
+}
+
+
+let rentals= [];
+//pull the data
+rentalModel.find()
+        .then(data=>{
+            rentals = data.map(value=>value.toObject());
+            console.log('rentals pull success!');
+        });
+
+
+module.exports.getAllRentals = function(){
+>>>>>>> 27e611deb30175551cb3d8b33f1e93e157ec766f
     return rentals;
     
 }
 
 module.exports.getFeaturedRentals = function(){
+<<<<<<< HEAD
     pullRentals();
+=======
+>>>>>>> 27e611deb30175551cb3d8b33f1e93e157ec766f
     let filtered = [];
     for (let i = 0; i < rentals.length; i++) {
         if (rentals[i].featuredRental) {
@@ -95,7 +220,10 @@ module.exports.getFeaturedRentals = function(){
 }
 
 module.exports.getRentalsByCityAndProvince = function(){
+<<<<<<< HEAD
     pullRentals();
+=======
+>>>>>>> 27e611deb30175551cb3d8b33f1e93e157ec766f
     let filtered = [];
 
     //version 1

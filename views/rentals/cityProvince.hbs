@@ -13,6 +13,7 @@
 </div> --}}
 
 <div class="container">
+<<<<<<< HEAD
     
     {{#each rentals}}
     <div class="row"><h1>{{ this.cityProvince }}</h1></div>
@@ -20,6 +21,12 @@
         
         {{#each rentals}}
         
+=======
+    {{#each rentals}}
+    <div class="row"><h1>{{ this.cityProvince }}</h1></div>
+    <div class="row">
+        {{#each this.rentals}}
+>>>>>>> 27e611deb30175551cb3d8b33f1e93e157ec766f
         {{>rental this}}
         {{/each}}
     </div>
