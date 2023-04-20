@@ -1,1 +1,59 @@
-<h3 style="height: 50%; text-align: center;padding: 20%">Welcome: {{user.name}}</h3>
+
+
+<h2>User Details</h2>
+    <dl>
+        <dt>Logged In?</dt>
+        {{#if user}}
+            <dd>Yes</dd>
+        {{else}}
+            <dd>No</dd>
+        {{/if}}
+</dl>
+
+<h2>Shopping Cart</h2>
+    <dl>
+        <dt>Cart Empty?</dt>
+        {{#if hasRentals}}
+            <dd>No</dd>
+        {{else}}
+            <dd>Yes</dd>
+        {{/if}}
+
+        <dt>Cart Amount</dt>
+        <dd>{{cartTotal}}</dd>
+</dl>
+{{#if hasRentals}}
+        <table border="1" cellspacing="2" cellpadding="2">
+            <tr>
+                <th></th>
+                <th>Headline</th>
+                <th>City</th>
+                <th>Province</th>
+                <th>PricePerNight</th>
+                <th>NightsReserved</th>
+                <th>Subtotal</th>
+                <th>VAT</th>
+            </tr>
+
+            {{#each rentals}}
+                <tr>
+                    <td><img src="/rentals-images/{{rental.imageUrl}}" alt="NoPic" style="height:30px;"></td>
+                    <td>{{rental.headline}}</td>
+                    <td>{{rental.city}}</td>
+                    <td>{{rental.province}}</td>
+                    <td>{{rental.pricePerNight}}</td>
+                    <td>{{qty}}</td>
+                    <td>{{subTotal}}</td>
+                    <td>{{VAT}}</td>
+                    <td><form action="/rentals/update-rental/{{rental._id}}" method="post">
+                    <input type="number" name="qty"></td>
+                    <td><button type="submit">Update</button></td>
+                    </form>
+                    <td><button type="button" onclick="window.location.href='/rentals/delete-rental/{{rental._id}}'">Delete</button> </td>
+                </tr>
+            {{/each}}
+
+        </table>
+        <br>
+        <button type="button" onclick="window.location.href='/rentals/place-order'">Place Order</button>
+{{/if}}

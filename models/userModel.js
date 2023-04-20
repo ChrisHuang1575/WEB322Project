@@ -137,10 +137,10 @@ module.exports.addUser = function(req,res){
                 
                     sgMail.send(msg)
                         .then(() => {
-                            res.render("user/welcome", {
+                            res.render("general/welcome", {
                                 title: "Welcome Page",
                                 values: req.body
-                             });;
+                             });
                         })
                         .catch(err => {
                             console.log(err);
@@ -230,7 +230,7 @@ module.exports.login = function(req,res){
                                 if (req.body.userType === user.userType) {
                                     //if this account is common user
                                     if (user.userType ==='u') {
-                                        req.session.user.userType = ''
+                                        req.session.user.userType = ' '
                                         res.redirect("/cart")
                                     }
                                     else if (user.userType ==='c') {

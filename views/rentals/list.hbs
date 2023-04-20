@@ -1,9 +1,13 @@
 <h3>Hello: {{user.name}}</h3>
     <br>
+<a href="/rentals/load-data">load data page</a>
+<br>
+<br>
 <div class="row">
     
     {{#each rentals}}
         {{>rental this}}
+        
     {{else}}
         <tr>
             <td>Nothing There!</td>

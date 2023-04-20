@@ -5,9 +5,13 @@ const userList = require("../models/userModel");
 
 // setup a 'route' to listen on the default url path (http://localhost)
 router.get("/", function (req, res) {
+    let isT = true;
+    if(!req.session.user || req.session.user.userType === 'c') isT = false;
     res.render("general/home",{
-        rentals: rentalList.getFeaturedRentals
+        rentals: rentalList.getFeaturedRentals,
+        isUser:isT
     });
+    
 });
 
 router.get("/cart",function(req,res){
@@ -21,7 +25,19 @@ router.get("/cart",function(req,res){
         res.send("You are not authorized to view this page.")
     }
     else{
-        res.render("general/cart")
+        let cart = req.session.cart || [];
+         let cartTotal = 0;
+         const hasRentals = cart.length > 0;
+         // If there are songs in the cart, then calculate the order total.
+        if (hasRentals) {
+            cart.forEach(cartRental => {
+                cartTotal += cartRental.rental.pricePerNight * cartRental.qty * 1.1;  });
+        }
+        res.render("general/cart",{
+            hasRentals,
+            rentals: cart,
+            cartTotal: "$" + cartTotal.toFixed(2)
+        })
     }
     
 })
@@ -30,6 +46,6 @@ router.get("/cart",function(req,res){
 router.get("/logout",function(req,res){
     req.session.destroy();
 
-    res.redirect("/user/login");
+    res.redirect("/user/log-in");
 })
 module.exports = router;

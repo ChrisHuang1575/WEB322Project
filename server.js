@@ -3,6 +3,7 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const mongoose = require("mongoose");
 const session = require("express-session");
+const fileUpload = require("express-fileupload");
 const app = express();
 
 // Set up dotenv
@@ -33,7 +34,10 @@ mongoose.connect(process.env.MONGO_CONN_STRING, {
 });
 
 // Set up body-parser
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
+
+// Set up express-upload
+app.use(fileUpload());
 
 // Set up express-session
 app.use(session({
@@ -56,10 +60,12 @@ app.use(express.static(path.join(__dirname, "/assets")));
 const generalController = require("./controllers/generalController");
 const rentalsController = require("./controllers/rentalsController");
 const userController = require("./controllers/userController");
+const loadDataController = require("./controllers/loadDataController");
 
 app.use("/", generalController);
 app.use("/rentals", rentalsController);
 app.use("/user",userController);
+app.use("/load-data",loadDataController);
 
 // *** DO NOT MODIFY THE LINES BELOW ***
 

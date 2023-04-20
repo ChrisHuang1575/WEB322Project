@@ -7,6 +7,14 @@
             <h6 class="card-subtitle mb-3 text-muted">Sleep: {{numSleeps}} - {{numBedrooms}} BR </h6>
             <p>C${{pricePerNight}} avg/night</p>
             <a href="#" class="card-link">Learn more</a>
+            <br>
+            
+            {{#if @root.isUser}}
+            
+            <p><a href="/rentals/add-rental/{{_id}}"  class="btn btn-primary btn-md">Rent</a></p>
+            {{/if}}
+            
+            
         </div>
     </div>
 </div>

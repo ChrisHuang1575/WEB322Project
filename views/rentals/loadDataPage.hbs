@@ -1,0 +1,88 @@
+
+
+<h2>Add a rental</h2>
+
+<form action="/rentals/add" method="post" enctype="multipart/form-data">
+    <label for="headline">Headline:</label>
+    <input type="text" name="headline" id="headline" required/><br />
+    <label for="numSleeps">NumSleeps:</label>
+    <input type="number" min="0" max="100" name="numSleeps" id="numSleeps" required/><br />
+    <label for="numBedrooms">NumBedrooms:</label>
+    <input type="number" min="0" max="100" name="numBedrooms" id="numBedrooms" required/><br />
+    <label for="numBathrooms">NumBathrooms:</label>
+    <input type="number" min="0" max="100" name="numBathrooms" id="numBathrooms" required/><br />
+    <label for="pricePerNight">PricePerNight:</label>
+    <input type="number" min="0.01" step="0.01" name="pricePerNight" id="pricePerNight" required/><br />
+    <label for="city">City:</label>
+    <input type="text" name="city" id="city" required/><br />
+    <label for="province">Province:</label>
+    <input type="text" name="province" id="province" required/><br />
+
+    <label for="imageUrl">Picture:</label>
+    <input type="file" name="imageUrl" id="imageUrl" required/><br />
+
+    <label for="featuredRental ">Feature:</label>
+    <input type="checkbox" name="featuredRental " id="featuredRental " value="ture" required/><br />
+    
+    <input type="submit" value="Add" />
+</form>
+
+<h2>Edit a rental</h2>
+{{!-- <form id="editForm"  action="rentals/edit" method="get">
+    <label for="objId">ID:</label>
+    <input type="text" id="objId" name="id">
+    <br>
+    <label for="headline">Headline:</label>
+    <input type="text" name="headline" id="headline" required/><br />
+    <label for="numSleeps">NumSleeps:</label>
+    <input type="number" min="0" max="100" name="numSleeps" id="numSleeps" required/><br />
+    <label for="numBedrooms">NumBedrooms:</label>
+    <input type="number" min="0" max="100" name="numBedrooms" id="numBedrooms" required/><br />
+    <label for="numBathrooms">NumBathrooms:</label>
+    <input type="number" min="0" max="100" name="numBathrooms" id="numBathrooms" required/><br />
+    <label for="pricePerNight">PricePerNight:</label>
+    <input type="number" min="0.01" step="0.01" name="pricePerNight" id="pricePerNight" required/><br />
+    <label for="city">City:</label>
+    <input type="text" name="city" id="city" required/><br />
+    <label for="province">Province:</label>
+    <input type="text" name="province" id="province" required/><br />
+    <label for="imageUrl">Picture:</label>
+    <input type="file" name="imageUrl" id="imageUrl" required/><br />
+    <label for="featuredRental">Feature:</label>
+    <input type="checkbox" name="featuredRental" id="featuredRental" value="ture" required/><br />
+    <input type="submit" value="Update" />
+</form> --}}
+    {{#each rentals}}
+    <div>
+        <form method="post" action="/rentals/edit/{{_id}}" enctype="multipart/form-data">
+                <table>
+                    <tr>
+                        <td><input type="text" name="id"  readonly value="{{_id}}"/></td>
+                        <td><input type="text" name="headline" value="{{headline}}" /></td>
+                        <td><input type="file" name="imageUrl" value="{{imageUrl}}" /></td>
+                        
+                        <td><button type="submit">Update</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    {{/each}}
+
+
+
+<h2>Delete a rental</h2>
+{{#each rentals}}
+    <div>
+        <form method="post" action="/rentals/delete/{{_id}}" enctype="multipart/form-data">
+                <table>
+                    <tr>
+                        <td><input type="text" name="id"  readonly value="{{_id}}"/></td>
+                        <td><input type="text" name="headline" value="{{headline}}" /></td>
+                        
+                        
+                        <td><button type="submit">Delete</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    {{/each}}
