@@ -25,7 +25,6 @@ router.get("/cart",function(req,res){
         res.send("You are not authorized to view this page.")
     }
     else{
-<<<<<<< HEAD
         let cart = req.session.cart || [];
          let cartTotal = 0;
          const hasRentals = cart.length > 0;
@@ -39,9 +38,6 @@ router.get("/cart",function(req,res){
             rentals: cart,
             cartTotal: "$" + cartTotal.toFixed(2)
         })
-=======
-        res.render("general/cart")
->>>>>>> 27e611deb30175551cb3d8b33f1e93e157ec766f
     }
     
 })
@@ -50,10 +46,6 @@ router.get("/cart",function(req,res){
 router.get("/logout",function(req,res){
     req.session.destroy();
 
-<<<<<<< HEAD
     res.redirect("/user/log-in");
-=======
-    res.redirect("/user/login");
->>>>>>> 27e611deb30175551cb3d8b33f1e93e157ec766f
 })
 module.exports = router;

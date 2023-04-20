@@ -1,13 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const rentalList = require("../models/rentalModel");
-<<<<<<< HEAD
 const path = require("path");
 const sgMail = require("@sendgrid/mail");
 
 const ObjectId = require('mongodb').ObjectId;
-=======
->>>>>>> 27e611deb30175551cb3d8b33f1e93e157ec766f
 
 router.get("/", (req, res) => {
     res.render("rentals/list", {
@@ -30,12 +27,8 @@ router.get("/list", (req, res) => {
     else
     {
         res.render("rentals/list", {
-<<<<<<< HEAD
             rentals: rentalList.getAllRentals(),
             isUser : false
-=======
-            rentals: rentalList.getAllRentals()
->>>>>>> 27e611deb30175551cb3d8b33f1e93e157ec766f
         })
     }
     ;
@@ -64,15 +57,10 @@ router.get("/cityProvince",(req,res)=>{
     });}
 });
 
-<<<<<<< HEAD
 router.get("/load-data",(req,res)=>{
     res.render("rentals/loadDataPage",{
         rentals: rentalList.getAllRentals()
     })
-=======
-router.get("/dummy",()=>{
-    rentalList.insertdummy();
->>>>>>> 27e611deb30175551cb3d8b33f1e93e157ec766f
 })
 
 //
